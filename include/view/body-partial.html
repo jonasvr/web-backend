@@ -1,0 +1,11 @@
+<div> 
+	<?php foreach($artikels as $id => $artikel): ?>
+		<p><?= $artikel[ 'title' ] ?></p>
+		<p><?= $artikel[ 'body' ] ?></p>
+		<ul>
+			<?php foreach($artikel[ 'tags' ] as $id => $tag): ?>
+				<li><?php echo $tag; ?></li>
+			<?php endforeach; ?>
+		</ul>
+	<?php endforeach; ?>
+</div>
