@@ -26,7 +26,7 @@
 
 				try
 			        {
-			            $db = new PDO('mysql:host=localhost;dbname=opdracht-security-login','root','');
+			            $db = new PDO('mysql:host=localhost;dbname=opdracht-crud-cms','root','');
 			            $_SESSION['email']=$_POST['email'];
 			            //kijken of er al een gebruiker met dit mail adres bestaat
 			            $query ='SELECT * FROM users WHERE email = :email';

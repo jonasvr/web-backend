@@ -1,0 +1,1 @@
+<a href="dashboard.php"> Terug naar Dashboard</a><p><?= strstr($_COOKIE['login'], ',', true); ?></p><a href="logout.php">uitloggen</a>
