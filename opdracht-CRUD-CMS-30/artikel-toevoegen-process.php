@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('redirect-login.php');
 	try
     {
         $db = new PDO('mysql:host=localhost;dbname=opdracht-crud-cms','root','');
@@ -20,14 +21,14 @@ session_start();
        	}
        	else
        	{
-       		$_SESSION['notification']=  'Het toevoegen is mislukt.';
+       		$_SESSION['notification']['message']=  'Het toevoegen is mislukt.';
        		redirect();
        	}
 				            
     }
     	catch ( PDOException $e ) // http://be2.php.net/manual/en/class.pdoexception.php
     {
-        $_SESSION['notification']=  'De connectie is mislukt.';
+        $_SESSION['notification']['message']=  'De connectie is mislukt.';
         redirect();
 	}
 

@@ -4,7 +4,7 @@
 		$email = strstr($_COOKIE['login'], ',', true); //string uitlezen tot aan de eerste komma
 		try
         {
-            $db = new PDO('mysql:host=localhost;dbname=opdracht-security-login','root','');
+            $db = new PDO('mysql:host=localhost;dbname=opdracht-crud-cms','root','');
             $query ='SELECT salt FROM users WHERE email = :email';
             $statement = $db->prepare($query);
             $statement->bindParam(':email',$email);
@@ -21,12 +21,13 @@
         }
 	}else
 	{
+		//echo 'not set';
 		redirect();
 	}
 
 	function redirect()
 	{
-		header ('location: login.php');
+		header ('location: login-form.php');
 	}
 ?>
 
@@ -34,7 +35,8 @@
 <!doctype html>
 <html>
 <head>
-	<title></title>
+	<title>Dashboard</title>
+	<?php include('../style.php'); ?>
 </head>
 <body>
 	<?php include('header.php') ?>

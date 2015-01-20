@@ -22,6 +22,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<?php include('../style.php'); ?>
 </head>
 	<body>
 	

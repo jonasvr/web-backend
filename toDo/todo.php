@@ -23,9 +23,8 @@ session_start();
 	if (isset($_POST['Task']))
 	{
 		$idTaak=$_POST['taak']; // id opslaan
-
-		if($_POST['Task']=='gedaan') // als gedaan geselecteerd is true zetten
-		{
+		if($_POST['Task']=='Gedaan') // als gedaan geselecteerd is true zetten
+		{	
 			$_SESSION['toDo'][$idTaak]['done']=true;
 		}
 		elseif($_POST['Task']=='nietGedaan') // als de taak dan toch niet gedaan is, terug false
@@ -55,6 +54,7 @@ session_start();
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Todo App</title>
         <link rel="stylesheet" href="style.css">
+        <?php include('../style.php'); ?>
     </head>
     <body>
 
@@ -71,7 +71,7 @@ session_start();
 			</ul>
 		<input type="submit" name="Task" value="Gedaan">
 		<input type="submit" name="Task" value="Delete">
-		<input type="submit" name="destroy" value="destroy">
+		
 		</form>
 
 
@@ -98,6 +98,7 @@ session_start();
 			</ul>
 
 			<input type="submit" name="addTodo" value="Toevoegen">
+			<input type="submit" name="destroy" value="destroy">
 
 		</form>
     </body>

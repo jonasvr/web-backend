@@ -1,0 +1,39 @@
+<?php
+session_start();
+include('redirect-login.php');
+	try
+    {
+        $db = new PDO('mysql:host=localhost;dbname=opdracht-upload','root','');
+
+        $query = 'INSERT INTO Artikels (titel, artikel, kernwoorden, datum) 
+                       			VALUES(:titel, :artikel, :kernwoorden, :datum)';
+        $statement = $db->prepare($query);
+        $statement->bindParam( ':titel', $_POST['titel']);
+        $statement->bindParam( ':artikel', $_POST['artikel']);
+        $statement->bindParam( ':kernwoorden', $_POST['kernwoorden'] );
+       	$statement->bindParam( ':datum', $_POST['datum'] );
+       	$toegevoegd = $statement->execute();
+       	//$toegevoegd = false;
+
+       	if($toegevoegd)
+       	{
+       		header('location: artikel-overzicht.php');
+       	}
+       	else
+       	{
+       		$_SESSION['notification']['message']=  'Het toevoegen is mislukt.';
+       		redirect();
+       	}
+				            
+    }
+    	catch ( PDOException $e ) // http://be2.php.net/manual/en/class.pdoexception.php
+    {
+        $_SESSION['notification']['message']=  'De connectie is mislukt.';
+        redirect();
+	}
+
+	function redirect()
+	{
+		header('location: artikel-toevoegen-form.php');
+	}
+?>

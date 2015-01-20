@@ -27,7 +27,7 @@
 				try
 			        {
 			            $db = new PDO('mysql:host=localhost;dbname=opdracht-crud-cms','root','');
-			            $_SESSION['email']=$_POST['email'];
+			            $_SESSION['email']=$email;
 			            //kijken of er al een gebruiker met dit mail adres bestaat
 			            $query ='SELECT * FROM users WHERE email = :email';
 			            $statement = $db->prepare($query);
@@ -43,10 +43,9 @@
 				            
 				            $statement = $db->prepare($query);
 				            $salt= uniqid(mt_rand(), true); //http://php.net/manual/en/function.uniqid.php
-				            $saltedPassWord = $salt.$_SESSION['passWord']; 
+				            $saltedPassWord = $salt.$password; 
 				            $hash = hash('sha512',$saltedPassWord);//http://php.net/manual/en/function.hash.php
-				          	$email= $_POST['email'];
-
+				          	
 				            $statement->bindParam( ':email', $email);
 				            $statement->bindParam( ':salt', $salt );
 				            $statement->bindParam( ':hashed_password', $hash );

@@ -29,7 +29,7 @@
             padding:12px;
         }
     </style>
-
+<?php include('../style.php'); ?>
 </head>
 <body>
 <table>
